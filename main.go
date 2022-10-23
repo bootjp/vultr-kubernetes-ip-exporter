@@ -73,8 +73,10 @@ func main() {
 		fmt.Println(ipNet.String())
 	}
 
-	saveRedis(ctx, cidr)
-
+	err = saveRedis(ctx, cidr)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func saveRedis(ctx context.Context, cidr []net.IPNet) error {
