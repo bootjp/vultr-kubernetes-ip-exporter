@@ -64,22 +64,18 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	cidr, err := convertIP2Cidr(ips)
-	if err != nil {
-		log.Fatal(err)
-	}
 
-	for _, ipNet := range cidr {
+	for _, ipNet := range ips {
 		fmt.Println(ipNet.String())
 	}
 
-	err = saveRedis(ctx, cidr)
+	err = saveRedis(ctx, ips)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
 
-func saveRedis(ctx context.Context, cidr []net.IPNet) error {
+func saveRedis(ctx context.Context, cidr []net.IP) error {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:     net.JoinHostPort(redisHost, redisPort),
 		Password: redisPassword,
@@ -123,18 +119,4 @@ func fetchIPs(ctx context.Context) ([]net.IP, error) {
 	}
 
 	return ips, nil
-}
-
-func convertIP2Cidr(ips []net.IP) ([]net.IPNet, error) {
-	var ipns []net.IPNet
-
-	for _, ip := range ips {
-		_, ipn, err := net.ParseCIDR(ip.String() + "/32")
-		if err != nil {
-			return nil, err
-		}
-		ipns = append(ipns, *ipn)
-	}
-
-	return ipns, nil
 }
