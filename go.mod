@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/vultr/govultr/v2 v2.17.2
-	github.com/vultr/govultr/v3 v3.0.1
+	github.com/vultr/govultr/v3 v3.0.2
 	golang.org/x/oauth2 v0.6.0
 )
 
