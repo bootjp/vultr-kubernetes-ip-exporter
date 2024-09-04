@@ -6,7 +6,7 @@ require (
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/vultr/govultr/v2 v2.17.2
 	github.com/vultr/govultr/v3 v3.0.3
-	golang.org/x/oauth2 v0.9.0
+	golang.org/x/oauth2 v0.23.0
 )
 
 require (
