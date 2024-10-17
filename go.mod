@@ -3,7 +3,7 @@ module github.com/bootjp/vultr-kubernetes-ip-exporter
 go 1.19
 
 require (
-	github.com/go-redis/redis/v8 v8.11.5
+	github.com/go-redis/redis/v9 v9.7.0
 	github.com/vultr/govultr/v2 v2.17.2
 	github.com/vultr/govultr/v3 v3.0.3
 	golang.org/x/oauth2 v0.9.0
